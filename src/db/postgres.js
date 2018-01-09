@@ -107,9 +107,7 @@ const postgres = {
   async insert(tableName, changes) {
     if (!changes) {
       throw new Error(
-        `Tried to perform an insert on ${
-          tableName
-        } without any values. Supply a changes object`
+        `Tried to perform an insert on ${tableName} without any values. Supply a changes object`
       )
     }
 
@@ -140,16 +138,12 @@ const postgres = {
   async update(tableName, changes, conditions) {
     if (!changes) {
       throw new Error(
-        `Tried to update ${
-          tableName
-        } without any values. Supply a changes object`
+        `Tried to update ${tableName} without any values. Supply a changes object`
       )
     }
     if (!conditions) {
       throw new Error(
-        `Tried to update ${
-          tableName
-        } without a WHERE clause. Supply a conditions object`
+        `Tried to update ${tableName} without a WHERE clause. Supply a conditions object`
       )
     }
 
@@ -182,9 +176,7 @@ const postgres = {
   delete(tableName, conditions) {
     if (!conditions) {
       throw new Error(
-        `Tried to update ${
-          tableName
-        } without a WHERE clause. Supply a conditions object`
+        `Tried to update ${tableName} without a WHERE clause. Supply a conditions object`
       )
     }
 
@@ -242,9 +234,9 @@ const postgres = {
     unique = unique === true ? 'UNIQUE' : ''
 
     return this.client.query(
-      `CREATE ${unique} INDEX IF NOT EXISTS ${name} ON ${
-        tableName
-      } (${fields.join(',')})`
+      `CREATE ${unique} INDEX IF NOT EXISTS ${name} ON ${tableName} (${fields.join(
+        ','
+      )})`
     )
   },
 
